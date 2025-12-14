@@ -17,12 +17,6 @@ interface TaskDetailModalProps {
   onUpdate: (id: string, data: UpdateTaskInput) => Promise<void>
 }
 
-const priorityColors = {
-  high: "bg-red-500/10 text-red-500 border-red-500/20",
-  medium: "bg-amber-500/10 text-amber-500 border-amber-500/20",
-  low: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
-}
-
 const priorityDots = {
   high: "bg-red-500",
   medium: "bg-amber-500",
@@ -88,7 +82,7 @@ export function TaskDetailModal({ open, onOpenChange, task, onUpdate }: TaskDeta
       await onUpdate(task.id, updateData)
       setLocalTask({ ...localTask, [field]: value })
     } catch (error) {
-      // Revert on error
+      console.log(error.message, error.stack)
       setLocalTask(task)
     } finally {
       setIsSaving(false)
@@ -104,6 +98,7 @@ export function TaskDetailModal({ open, onOpenChange, task, onUpdate }: TaskDeta
     try {
       await onUpdate(task.id, { [field]: value })
     } catch (error) {
+      console.error(error);
       setLocalTask(task)
     } finally {
       setIsSaving(false)
@@ -118,7 +113,8 @@ export function TaskDetailModal({ open, onOpenChange, task, onUpdate }: TaskDeta
 
     try {
       await onUpdate(task.id, { dueDate: value || undefined })
-    } catch (error) {
+    } catch (_error) {
+      console.error(_error);
       setLocalTask(task)
     } finally {
       setIsSaving(false)
