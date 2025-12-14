@@ -46,7 +46,7 @@ export function TaskDetailModal({ open, onOpenChange, task, onUpdate }: TaskDeta
         () => {
           setIsLoading(false)
         },
-        500 + Math.random() * 500,
+        500 + Math.random() * 500
       ) // 0.5-1s fake loading
       return () => clearTimeout(timer)
     }
@@ -81,8 +81,8 @@ export function TaskDetailModal({ open, onOpenChange, task, onUpdate }: TaskDeta
     try {
       await onUpdate(task.id, updateData)
       setLocalTask({ ...localTask, [field]: value })
-    } catch (error) {
-      console.log(error.message, error.stack)
+    } catch (_error) {
+      console.log(_error)
       setLocalTask(task)
     } finally {
       setIsSaving(false)
@@ -97,8 +97,8 @@ export function TaskDetailModal({ open, onOpenChange, task, onUpdate }: TaskDeta
 
     try {
       await onUpdate(task.id, { [field]: value })
-    } catch (error) {
-      console.error(error);
+    } catch (_error) {
+      console.log(_error)
       setLocalTask(task)
     } finally {
       setIsSaving(false)
@@ -114,7 +114,7 @@ export function TaskDetailModal({ open, onOpenChange, task, onUpdate }: TaskDeta
     try {
       await onUpdate(task.id, { dueDate: value || undefined })
     } catch (_error) {
-      console.error(_error);
+      console.log(_error)
       setLocalTask(task)
     } finally {
       setIsSaving(false)
@@ -214,7 +214,7 @@ export function TaskDetailModal({ open, onOpenChange, task, onUpdate }: TaskDeta
                   <p
                     className={cn(
                       "text-sm rounded px-3 py-2 cursor-pointer hover:bg-muted/50 transition-colors min-h-[60px] break-words",
-                      localTask.description ? "text-foreground" : "text-muted-foreground italic",
+                      localTask.description ? "text-foreground" : "text-muted-foreground italic"
                     )}
                     onClick={() => setEditingField("description")}
                     title="Click to edit"

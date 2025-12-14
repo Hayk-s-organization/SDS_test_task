@@ -73,7 +73,7 @@ export function TaskCard({ task, onEdit, onDelete, onToggleStatus, onClick }: Ta
     <Card
       className={cn(
         "group transition-all duration-200 hover:shadow-md border-border/50 cursor-pointer",
-        isCompleted && "opacity-60",
+        isCompleted && "opacity-60"
       )}
       onClick={handleCardClick}
     >
@@ -94,7 +94,7 @@ export function TaskCard({ task, onEdit, onDelete, onToggleStatus, onClick }: Ta
               <h3
                 className={cn(
                   "font-medium text-foreground leading-snug text-sm sm:text-base",
-                  isCompleted && "line-through text-muted-foreground",
+                  isCompleted && "line-through text-muted-foreground"
                 )}
               >
                 {task.title}
@@ -144,7 +144,7 @@ export function TaskCard({ task, onEdit, onDelete, onToggleStatus, onClick }: Ta
               variant="outline"
               className={cn(
                 "text-xs w-fit",
-                isOverdue ? "bg-red-500/10 text-red-500 border-red-500/20" : "text-muted-foreground",
+                isOverdue ? "bg-red-500/10 text-red-500 border-red-500/20" : "text-muted-foreground"
               )}
             >
               <Calendar className="h-3 w-3 mr-1" />
